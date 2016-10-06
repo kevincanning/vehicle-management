@@ -5,7 +5,6 @@
 @section('content')
 
 <div class="row">
-	<div class="col-md-8 col-md-offset-2">
 	<h1>Create New Vehicle</h1>
 	<hr>
 	{!! Form::open(array('route' => 'vehicles.store')) !!}
@@ -30,8 +29,12 @@
     {{ Form::label('type', 'Type:') }}
     {{ Form::text('type', null, array('class' => 'form-control')) }}
 
+    <br/>
+    
     {{ Form::label('year', 'Year:') }}
-    {{ Form::text('year', null, array('class' => 'form-control')) }}
+    {{ Form::selectYear('year', 2016, 1980  , array('class' => 'form-control')) }}
+
+    <br/>
 
     {{ Form::label('colour', 'Colour:') }}
     {{ Form::text('colour', null, array('class' => 'form-control')) }}
@@ -39,10 +42,9 @@
     {{ Form::label('mileage', 'Mileage:') }}
     {{ Form::text('mileage', null, array('class' => 'form-control')) }}
 
-    {{ Form::submit('Create Vehicle', array('class' => 'btn btn-success btn-lg btn-block', 'style' => 'margin-top: 20px;')) }}
+    {{ Form::submit('Create Vehicle', array('class' => 'btn btn-success btn-lgbtn-block-mod', 'style' => 'margin-top: 20px;')) }}
 
 	{!! Form::close() !!}
-	</div>
 </div>
 
 @endsection

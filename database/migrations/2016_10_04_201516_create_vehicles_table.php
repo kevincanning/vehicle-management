@@ -24,6 +24,7 @@ class CreateVehiclesTable extends Migration
             $table->string('colour');
             $table->string('mileage');
             $table->timestamps();
+            $table->softDeletes('deleted_at');
         });
     }
 

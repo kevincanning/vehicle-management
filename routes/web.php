@@ -11,24 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/home', function () {
-    return view('pages.home');
-});
-
 Route::group(['middleware' => ['web']], function () {
 		// Authentication Routes
-	Route::get('/login', 'HomeController@index');
+	Route::get('/login', 'HomeController@getLogin');
 	Route::get('/logout', 'HomeController@getLogout');
+
 });
 
 Route::group(['middleware' => ['auth']], function () {
+	Route::get('/', 'HomeController@index');
 	Route::resource('/vehicles', 'VehicleController');
 });
 
-
 Auth::routes();
-

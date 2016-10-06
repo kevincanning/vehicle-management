@@ -21,11 +21,11 @@ class VehicleController extends Controller
         return view('pages.index')->withVehicles($vehicles);
     }
 
-    public function home()
+    public function home($id)
     {
-        $vehicles = Vehicle::all();
+        $vehicle = Vehicle::find($id);
 
-        return view('pages.home')->withVehicles($vehicles);
+        return view('pages.home')->withVehicles($vehicle);
     }
 
     /**
@@ -46,11 +46,15 @@ class VehicleController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, array(
-                'fullname' => 'required|max:60|',
-                'contactNumber' => 'required',
-                'email' => 'required',
-            ));
+         $this->validate($request, array(
+            'fullname' => 'required|max:60|string',
+            'contactNumber' => 'required|numeric',
+            'email' => 'required|email',
+            'manufacturer' => 'required|string',
+            'type' => 'required',
+            'year' => 'required',
+            'colour' => 'required',
+            'mileage' => 'required'));
 
         $vehicle = new Vehicle;
 
@@ -104,7 +108,16 @@ class VehicleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-{
+    {
+         $this->validate($request, array(
+            'fullname' => 'required|max:60|string',
+            'contactNumber' => 'required|numeric',
+            'email' => 'required|email',
+            'manufacturer' => 'required|string',
+            'type' => 'required',
+            'year' => 'required',
+            'colour' => 'required',
+            'mileage' => 'required'));
 
         $vehicle = Vehicle::find($id);
 
@@ -119,7 +132,7 @@ class VehicleController extends Controller
 
         $vehicle->save();
 
-        Session::flash('success', 'Created Successfully!');
+        $request->session()->flash('success', 'Updated Successfully!');
 
         return redirect()->route('vehicles.show', $vehicle->$id);
     }

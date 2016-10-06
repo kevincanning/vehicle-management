@@ -51,7 +51,7 @@
 													<a href="{{ route('vehicles.edit', $vehicle->id) }}" class="btn btn-default">Edit</a>
 
 																					<div class="col-sm-6">
-						{!! Form::open(['route' => ['vehicles.destroy', $vehicle->id], 'method' => 'DELETE']) !!}
+						{!! Form::open(['route' => ['vehicles.destroy', $vehicle->id], 'method' => 'DELETE', 'onsubmit' => 'return ConfirmDelete()']) !!}
 
 						{!! Form::submit('Delete', ['class' => 'btn btn-danger btn-block']) !!}
 

@@ -8,7 +8,7 @@
 		{!! Form::model($vehicle, ['route' => ['vehicles.update', $vehicle->id], 'method' => 'PUT']) !!}
 		<div class="col-md-8">
 			{{ Form::label('fullname', 'Fullname:') }}
-			{{ Form::text('fullname', null, ["class" => 'form-control input-lg']) }}
+			{{ Form::text('fullname', null, ["class" => 'form-control']) }}
 			
 			{{ Form::label('contactNumber', "Contact Number:", ['class' => 'form-spacing-top']) }}
 			{{ Form::text('contactNumber', null, ['class' => 'form-control']) }}

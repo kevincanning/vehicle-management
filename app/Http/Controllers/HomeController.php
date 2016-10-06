@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use App\Vehicle;
 
 class HomeController extends Controller
 {
@@ -14,15 +15,28 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function home()
+    {
+        return view('pages.home');
+    }
+
     public function index()
     {
-        return view('home');
+        $vehicles = Vehicle::all();
+
+        return view('pages.home')->withVehicles($vehicles);
+    }
+
+
+    public function getLogin()
+    {
+        return view('pages.login');
     }
 
     public function getLogout()
     {
         \Auth::logout();
-
+        
         return redirect('login');
     }
 }
