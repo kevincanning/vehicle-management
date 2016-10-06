@@ -21,7 +21,6 @@ class UsersTableSeeder extends Seeder
            	'password' => bcrypt('one')
         ]);
 
-        \DB::table('users')->delete();
         User::Create([
             'firstname' => 'Test',
             'lastname' => 'Two',
