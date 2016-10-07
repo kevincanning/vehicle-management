@@ -39,6 +39,7 @@
                                                 <a href="{{ route('vehicles.show', $vehicle->id) }}" class="btn btn-default">View </a>
                                                 <a href="{{ route('vehicles.edit', $vehicle->id) }}" class="btn 
                                                     btn-default">Edit</a>
+                                                <a href="{{ route('vehicles.destroy', $vehicle->id) }}" class="btn btn-danger">Delete </a>
                                                 </td>
                                             </tr>
                                             @endforeach
