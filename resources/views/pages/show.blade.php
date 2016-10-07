@@ -4,42 +4,67 @@
 
 @section('content')
 
-<div class="row">
-	<div class="col-md-12"> 
-		<div class="row">
-				<table class="table">
-					<thead>
-						<th>#</th>
-						<th>Fullname</th>
-						<th>Contact Number</th>
-						<th>Email</th>
-						<th>Manufacturer<th>
-						<th>Type</th>
-						<th>Year</th>
-						<th>Colour</th>
-						<th>Mileage</th>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-default">
 
-					</thead>
-					<tbody>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-10">
+							<h2>Vehicle information for {{ $vehicle->fullname }}</h2>
+						</div>
 
-						<tr>
-							<td>{{ $vehicle->id }}</td>
-							<td>{{ $vehicle->fullname }}</td>
-							<td>{{ $vehicle->contactNumber }}</td>
-							<td>{{ $vehicle->email }}</td>
-							<td>{{ $vehicle->manufacturer }}</td>
-							<td>{{ $vehicle->type }}</td>
-							<td>{{ $vehicle->year }}</td>
-							<td>{{ $vehicle->colour }}</td>
-							<td>{{ $vehicle->mileage }}</td>
-							<td>{{ date('n F Y', strtotime($vehicle->created_at)) }}</td>
-							<td>
-								<a href="{{ route('vehicles.edit', $vehicle->id) }}" class="btn btn-default">Edit</a>
-							</td>
-						</tr>
-					</tbody>
-				</table>	
+						<div class="col-md-2">
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-12"> 
+							<div class="row">
+									<table class="table" id="delete-btn">
+										<thead>
+											<th>#</th>
+											<th>Contact Number</th>
+											<th>Email</th>
+											<th>Manufacturer</th>
+											<th>Type</th>
+											<th>Year</th>
+											<th>Colour</th>
+											<th>Mileage</th>
+
+										</thead>
+										<tbody>
+											
+											<tr>
+												<td>{{ $vehicle->id }}</td>
+												<td>{{ $vehicle->contactNumber }}</td>
+												<td>{{ $vehicle->email }}</td>
+												<td>{{ $vehicle->manufacturer }}</td>
+												<td>{{ $vehicle->type }}</td>
+												<td>{{ $vehicle->year }}</td>
+												<td>{{ $vehicle->colour }}</td>
+												<td>{{ $vehicle->mileage }}</td>
+												<td>
+													<a href="{{ route('vehicles.edit', $vehicle->id) }}" class="btn btn-default">Edit</a>
+
+																					<div class="col-sm-6">
+						{!! Form::open(['route' => ['vehicles.destroy', $vehicle->id], 'method' => 'DELETE', 'onsubmit' => 'return ConfirmDelete()']) !!}
+
+						{!! Form::submit('Delete', ['class' => 'btn btn-danger btn-block']) !!}
+
+						{!! Form::close() !!}
+					</div>
+												</td>
+											</tr>
+											
+										</tbody>
+									</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-	</div>
-</div>
+
 @endsection
