@@ -39,7 +39,14 @@
                                                 <a href="{{ route('vehicles.show', $vehicle->id) }}" class="btn btn-default">View </a>
                                                 <a href="{{ route('vehicles.edit', $vehicle->id) }}" class="btn 
                                                     btn-default">Edit</a>
-                                                <a href="{{ route('vehicles.destroy', $vehicle->id) }}" class="btn btn-danger">Delete </a>
+                                                
+                                                                                    <div class="col-sm-6">
+                        {!! Form::open(['route' => ['vehicles.destroy', $vehicle->id], 'method' => 'DELETE']) !!}
+
+                        {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-block']) !!}
+
+                        {!! Form::close() !!}
+                    </div>
                                                 </td>
                                             </tr>
                                             @endforeach
